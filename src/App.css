@@ -1,0 +1,11 @@
+.mic-icon{
+  height: 5rem;
+  width: 5rem;
+  object-fit: contain;
+}
+.microphone{
+  position: absolute;
+  top: 0;
+  right: 0
+  ;
+}
