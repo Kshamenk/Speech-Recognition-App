@@ -1,6 +1,6 @@
 import { IconButton, Typography } from "@mui/material";
 import { NeonButton } from "./Components/StyledComponents/StyledComponents";
-import  DisplayNotes  from "./Components/DisplayNotes/DisplayNotes";
+import DisplayNotes from "./Components/DisplayNotes/DisplayNotes";
 import { useEffect, useState } from "react";
 import micoff from "./Images/microphone-off.webp";
 import micon from "./Images/microphone.webp";
@@ -20,7 +20,23 @@ function App() {
   const [isListening, setIsListening] = useState(false);
   const [notes, setNotes] = useState(null);
 
-  
+  const [savedNotesToDo, setSavedNotesToDo] = useState([]);
+  const [savedNotesInProcess, setSavedNotesInProces] = useState([]);
+  const [savedNotesDone, setSavedNotesDone] = useState([]);
+
+  const savedNotes = [
+    {
+      group: "todo",
+      name: savedNotesToDo
+    }, {
+      group: "inprocess",
+      name: savedNotesInProcess
+    }, {
+      group: "done",
+      name: savedNotesDone
+    }
+  ]
+
 
   useEffect(() => {
     handleListen();
@@ -64,13 +80,19 @@ function App() {
           />
         </IconButton>
       </div>
-      <NeonButton status="todo">To Do 🗒️</NeonButton>
-      <NeonButton status="inprocess">In Process ✍️</NeonButton>
-      <NeonButton status="done">Done! ✅</NeonButton>
+      <NeonButton status="todo" onClick={() => {
+        setSavedNotesToDo([...savedNotesToDo, notes])
+      }} >To Do 🗒️</NeonButton>
+      <NeonButton status="inprocess" onClick={() => {
+        setSavedNotesInProces([...savedNotesInProcess, notes])
+      }} >In Process ✍️</NeonButton>
+      <NeonButton status="done" onClick={() => {
+        setSavedNotesDone([...savedNotesDone, notes])
+      }} >Done! ✅</NeonButton>
       <Typography variant="h4" component="h2" gutterBottom>
         {notes}
       </Typography>
-      <DisplayNotes />
+      <DisplayNotes data={savedNotes} />
     </div>
   );
 }
