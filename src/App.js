@@ -80,15 +80,20 @@ function App() {
           />
         </IconButton>
       </div>
-      <NeonButton status="todo" onClick={() => {
+      <div className="buttons" >
+      <NeonButton status="todo" disabled={!notes} onClick={() => {
         setSavedNotesToDo([...savedNotesToDo, notes])
+        setNotes('')
       }} >To Do 🗒️</NeonButton>
-      <NeonButton status="inprocess" onClick={() => {
+      <NeonButton status="inprocess" disabled={!notes} onClick={() => {
         setSavedNotesInProces([...savedNotesInProcess, notes])
+        setNotes('')
       }} >In Process ✍️</NeonButton>
-      <NeonButton status="done" onClick={() => {
+      <NeonButton status="done" disabled={!notes} onClick={() => {
         setSavedNotesDone([...savedNotesDone, notes])
+        setNotes('')
       }} >Done! ✅</NeonButton>
+      </div>
       <Typography variant="h4" component="h2" gutterBottom>
         {notes}
       </Typography>
