@@ -27,4 +27,18 @@ color:${({status})=> status==='done' ? 'green' : status === 'inprocess' ? 'orang
     box-shadow: 0 0 10px 0 ${({status})=> status==='done' ? 'green' : status === 'inprocess' ? 'orange' : '#555'} inset, 0 0 20px 2px ${({status})=> status==='done' ? 'green' : status === 'inprocess' ? 'orange' : '#555'};
 }
 
+&:focus{
+    outline-width: 0;
+}
+`
+
+export const NeonDiv = styled(NeonButton)`
+width: 90%;
+padding-left: 10px;
+padding-right: 10px;
+margin-bottom: 10px;
+text-transform: capitalize;
+display: flex;
+
+
 `
